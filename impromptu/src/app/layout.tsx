@@ -4,6 +4,8 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import { Providers } from "./providers";
+import Header from "@/components/ui/Header";
 
 export const metadata: Metadata = {
   title: "Impromptu AI",
@@ -21,8 +23,8 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+      <body className="">
+        <TRPCReactProvider><Providers><Header/>{children}</Providers></TRPCReactProvider>
       </body>
     </html>
   );
