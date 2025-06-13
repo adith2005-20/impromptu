@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "./card";
 import { type AgentEvent } from "@/server/api/routers/chat"; 
+import { SignedOut } from "@daveyplate/better-auth-ui";
 
 const HomeComponent = () => {
   const [messageVal, setMessageVal] = useState("");
@@ -92,6 +93,14 @@ const HomeComponent = () => {
 
   return (
     <div className="text-foreground w-full min-h-screen flex flex-col items-center justify-center px-4 py-8">
+      {/* Header Section */}
+      <div className="text-center mb-8 max-w-2xl">
+        <p className="text-muted-foreground text-lg leading-relaxed">
+          Your intelligent scheduling companion. Describe what you need, you can organize meetings, 
+          appointments, events and make schedules with just a prompt.
+        </p>
+      </div>
+
       <div className="relative w-full max-w-2xl mb-8">
         <Textarea
           className="w-full pr-16 resize-none h-36"
@@ -110,6 +119,10 @@ const HomeComponent = () => {
           <SendIcon className="w-4 h-4" />
         </Button>
       </div>
+
+      <SignedOut><p className="text-accent-foreground italic  text-sm leading-relaxed ">
+          Please login with Google and grant necessary calendar permissions to use Impromptu. 
+          </p></SignedOut>
 
       {/* Main Response Card */} 
       {(mutation.isPending || agentEvents.length > 0 || mutation.error) && (
